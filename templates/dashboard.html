@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-success shadow-sm">
+            <div class="card-body">
+                <h5>Total Income</h5>
+                <h3><span class="fs-1 fw-bold">৳</span>{{ total_income }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-danger shadow-sm">
+            <div class="card-body">
+                <h5>Total Expenses</h5>
+                <h3><span class="fs-1 fw-bold">৳</span>{{ total_expense }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-primary shadow-sm">
+            <div class="card-body">
+                <h5>Net Balance</h5>
+                <h3><h3><span class="fs-1 fw-bold">৳</span>{{ net_balance }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-center">Transactions</h2>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Recent Cash Ins</h4>
+        <ul class="list-group mb-3">
+            {% for income in incomes %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ income.source }}</strong>
+                        <strong>{{ income.description }}</strong>
+                        <small class="text-muted">({{ income.datetime|date:"Y-m-d H:i" }})</small>
+                    </div>
+                    <span class="badge bg-success px-3 py-2 rounded-pill fs-6 fw-bold">+{{ income.amount }}/BDT</span>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No cash entries found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h4>Recent Expenses</h4>
+        <ul class="list-group mb-3">
+            {% for expense in expenses %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ expense.description }}</strong> <small class="text-muted">({{ expense.datetime|date:"Y-m-d H:i" }})</small>
+                    </div>
+                    <span class="badge bg-danger px-3 py-2 rounded-pill fs-6 fw-bold">-{{ expense.amount }}/BDT</span>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No expense entries found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
