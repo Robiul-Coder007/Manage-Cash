@@ -15,7 +15,7 @@ A Python Django web application designed to help users track income, expenses, a
    ```bash
 bash
 git clone https://github.com/Robiul-Coder007/Manage-Cash.git .
-cd Robiul_03_ManageCash
+cd Manage Cash
 
 **Create and activate a virtual environment:**
 
