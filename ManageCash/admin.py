@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(CustomUser)
 admin.site.register(AddCash)
 admin.site.register(Expense)
+admin.site.register(Expense)
